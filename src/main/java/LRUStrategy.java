@@ -9,13 +9,13 @@ public class LRUStrategy<K,T> implements ICacheStrategy<K, T> {
         if (!mapOfObjects.isEmpty()) {
             Calendar cal = Calendar.getInstance();
             cal.add(Calendar.DATE, 1);
-            Date minAccessTime = cal.getTime();
-            Date currentAccessTime;
+            long minAccessTime = cal.getTime().getTime();
+            long currentAccessTime;
 
             for (Map.Entry<K, Wrapper<T>> entry : mapOfObjects.entrySet()) {
                 currentAccessTime = ((LRUWrapper<T>) entry.getValue()).getLastAccessTime();
 
-                if (currentAccessTime.getTime() < minAccessTime.getTime()) {
+                if (currentAccessTime < minAccessTime) {
                     minAccessTime = currentAccessTime;
                     resultKey = entry.getKey();
                 }
@@ -33,7 +33,7 @@ public class LRUStrategy<K,T> implements ICacheStrategy<K, T> {
         LRUWrapper<T> wrapper = (LRUWrapper<T>)value;
 
         if (wrapper != null) {
-            wrapper.setLastAccessTime(new Date());
+            wrapper.setLastAccessTime(new Date().getTime());
         }
     }
 }

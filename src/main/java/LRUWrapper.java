@@ -1,18 +1,18 @@
 import java.util.Date;
 
-public class LRUWrapper<T> extends Wrapper<T> {
-    private Date lastAccessTime;
+class LRUWrapper<T> extends Wrapper<T> {
+    private long lastAccessTime;
 
-    public Date getLastAccessTime() {
+    long getLastAccessTime() {
         return lastAccessTime;
     }
 
-    public void setLastAccessTime(Date lastAccessTime) {
+    void setLastAccessTime(long lastAccessTime) {
         this.lastAccessTime = lastAccessTime;
     }
 
     LRUWrapper(T value) {
         super(value);
-        this.lastAccessTime = new Date();
+        this.lastAccessTime = new Date().getTime();
     }
 }

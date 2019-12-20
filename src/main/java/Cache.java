@@ -25,8 +25,9 @@ public class Cache<K, T> implements ICache<K, T> {
                 objectForRemoving = new Pair<K, T>(keyForRemoving, wrapperForRemoving.getValue());
                 storage.remove(keyForRemoving);
             }
-        } else
-            strategy.registerUsage(wrapper);
+        } else {
+            storage.remove(key);
+        }
 
         Wrapper<T> wrapperNew = strategy.createWrapper(value);
         storage.add(key, wrapperNew);

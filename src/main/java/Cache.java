@@ -1,4 +1,4 @@
-import javafx.util.Pair;
+//import javafx.util.Pair;
 
 public class Cache<K, T> implements ICache<K, T> {
     private ICacheStorage<K, T> storage;

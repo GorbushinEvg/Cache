@@ -1,4 +1,4 @@
-import javafx.util.Pair;
+//import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,8 @@ public class CacheTest {
 
     @Before
     public void setUp() throws Exception {
-        ICacheStorage<String, Object> storage = new MemoryStorage<String, Object>(MAX_SIZE_OF_STORAGE);
+        //ICacheStorage<String, Object> storage = new MemoryStorage<String, Object>(MAX_SIZE_OF_STORAGE);
+        ICacheStorage<String, Object> storage = new FileSystemStorage<String, Object>(MAX_SIZE_OF_STORAGE);
         //ICacheStrategy<String, Object> strategy = new LRUStrategy<String, Object>();
         ICacheStrategy<String, Object> strategy = new LFUStrategy<String, Object>();
         cache = new Cache<String, Object>(storage, strategy);

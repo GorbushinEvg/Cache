@@ -9,6 +9,9 @@ public class LFUWrapper<T> extends Wrapper<T> {
         this.counter = counter;
     }
 
+    public LFUWrapper() {
+    }
+
     LFUWrapper(T value) {
         super(value);
         this.counter = 0;
